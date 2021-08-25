@@ -17,13 +17,8 @@ class ProductServiceImpl(@Autowired private val repository: ProductRepository) :
 
     override fun updateProduct(id: UUID, product: Product): Product {
         val updateProduct = Product(
-            product.name,
-            product.sku,
-            product.description,
-            product.price,
-            product.amount,
-            product.withDiscount,
-            id
+            product.name, product.sku, product.description,
+            product.price, product.amount, product.withDiscount, id
         )
         return repository.save(updateProduct)
     }

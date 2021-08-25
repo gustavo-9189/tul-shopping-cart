@@ -16,7 +16,7 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/products")
-class ProductController(@Autowired private val service: ProductService) {
+class ProductController(@Autowired private val service: ProductService): BaseController() {
 
     @GetMapping
     fun getProducts(): List<Product> = service.getProducts()

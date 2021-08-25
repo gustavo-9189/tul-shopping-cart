@@ -25,6 +25,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("io.github.microutils:kotlin-logging:2.0.10")
+	implementation("io.springfox:springfox-swagger2:2.7.0")
+	implementation("io.springfox:springfox-swagger-ui:2.7.0")
 	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

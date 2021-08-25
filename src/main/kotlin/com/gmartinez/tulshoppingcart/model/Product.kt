@@ -2,8 +2,10 @@ package com.gmartinez.tulshoppingcart.model
 
 import java.util.*
 import javax.persistence.Entity
+import javax.validation.constraints.Min
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
+import javax.validation.constraints.Positive
 
 @Entity
 class Product(
@@ -13,9 +15,9 @@ class Product(
     val sku: String,
     @field:NotBlank(message = "El campo description es requerido")
     val description: String,
-    @field:NotNull(message = "El campo price es requerido")
+    @field:Positive(message = "El campo price debe ser mayor a 0")
     val price: Double,
-    @field:NotNull(message = "El campo amount es requerido")
+    @field:Min(value = 1, message = "El campo amount no puede ser menor a 1")
     var amount: Int,
     @field:NotNull(message = "El campo withDiscount es requerido")
     val withDiscount: Boolean,
