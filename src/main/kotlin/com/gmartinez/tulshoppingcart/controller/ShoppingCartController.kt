@@ -25,12 +25,12 @@ class ShoppingCartController(@Autowired private val service: ShoppingCartService
     @GetMapping("/{id}")
     fun getProductsByCart(
         @PathVariable id: UUID
-    ): MutableList<Product> = service.getProductsByCart(id)
+    ) = service.getProductsByCart(id)
 
     @PostMapping
     fun addProductToCart(
         @Validated @RequestBody shoppingCartRequest: ShoppingCartRequest
-    ): ShoppingCart = service.addProductToCart(shoppingCartRequest)
+    ) = service.addProductToCart(shoppingCartRequest)
 
     @PutMapping("/{id}")
     fun updateProductToCart(
