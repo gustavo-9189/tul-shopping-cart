@@ -17,17 +17,18 @@ class ShoppingCartServiceImpl(@Autowired private val repository: ShoppingCartRep
     @Value("\${discount-divider}")
     var discountDivider: Int = 2
 
-    override fun getProductsByCart(id: UUID): MutableList<Product> {
-        return repository.findById(id)
+    override fun getProductsByCart(id: UUID): MutableList<Product> =
+        repository.findById(id)
             .map(ShoppingCart::products)
             .get()
-    }
+
 
     override fun addProductToCart(shoppingCartRequest: ShoppingCartRequest): ShoppingCart {
-        var shoppingCart = ShoppingCart(mutableListOf())
-        if (shoppingCartRequest.idShoppingCart != null) {
-            shoppingCart = repository.findById(shoppingCartRequest.idShoppingCart).get()
-        }
+        val shoppingCart = shoppingCartRequest.idShoppingCart?.let {
+            repository.findById(it).get()
+
+        } ?: ShoppingCart(mutableListOf())
+
         shoppingCart.products.add(shoppingCartRequest.product)
         return repository.save(shoppingCart)
     }
